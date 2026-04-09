@@ -1,9 +1,8 @@
 import './style.css'
-import { setupCounter } from './counter.js'
-import { setupRootApp } from './setupRootApp.js'
+import { setupEvents, setupRootApp } from './setupRootApp.js'
+import { iniciaLista } from './lista.js';
 
-document.querySelector('#app').innerHTML = setupRootApp();
-
-
-
-setupCounter(document.querySelector('#counter'))
+const app = document.querySelector('#app');
+iniciaLista();
+app.append(setupRootApp());
+setupEvents(app);
