@@ -5,6 +5,7 @@ export function iniciaLista(){
 }
 
 export function getLista(){
+    
     return structuredClone(lista);
 }
 

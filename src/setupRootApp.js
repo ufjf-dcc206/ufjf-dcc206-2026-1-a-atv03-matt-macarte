@@ -7,36 +7,57 @@ export function setupRootApp() {
   return divRoot;
 }
 
-function criaLista() {
-  const div = document.createElement("div");
-
-  const btnAtualizar = document.createElement("button");
-  btnAtualizar.id = "atualizar";
-  btnAtualizar.textContent = "Atualizar";
-  div.append(btnAtualizar);
-
-  const ol = document.createElement("ol");
-  ol.id = "lista";
-  div.append(ol);
-  return div;
-}
-
 function criaTitulo() {
   const h1 = document.createElement("h1");
   h1.textContent = "App de lista";
   return h1;
 }
 
+function criaLista() {
+  const div = document.createElement("div");
+  const input = document.createElement("input");
+  const btnAtualizar = document.createElement("button");
+
+  input.id = "input";
+  input.type = "text";
+  input.placeholder = "digite um item...";
+  div.append(input);
+
+  btnAtualizar.id = "atualizar";
+  btnAtualizar.textContent = "Atualizar";
+  div.append(btnAtualizar);
+
+  const ol = document.createElement("ol");
+  div.append(ol);
+  
+  div.style.display = "flex";
+  div.style.flexDirection = "column";
+  div.style.alignItems = "center";
+  ol.id = "lista";
+  return div;
+}
+
 export function setupEvents(root){
   const btnAtualizar = root.querySelector("#atualizar");
-  const ol = root.querySelector("ol");
-  btnAtualizar.addEventListener("click", ()=>{
-    const lista = getLista();
-    ol.innerHTML = "";
-    for(let i=0; i<lista.length; i++){
-      const li = document.createElement("li");
-      li.textContent = lista[i];
-      ol.append(li);
-    }
-  });
+  btnAtualizar.addEventListener("click", ()=> Atualizar(root));
+  //{
+  //   const lista = getLista();
+  //   ol.innerHTML = "";
+  //   for(let i=0; i<lista.length; i++){
+  //     const li = document.createElement("li");
+  //     li.textContent = lista[i];
+  //     ol.append(li);
+  //   }
+  // });
+}
+
+function Atualizar(root){
+  const input = root.querySelector("#input");
+  if(input.value){
+    const ol = root.querySelector("ol");
+    const li = document.createElement("li");
+    li.textContent = input.value;
+    ol.append(li);
+    input.value = ""
+  }
 }
