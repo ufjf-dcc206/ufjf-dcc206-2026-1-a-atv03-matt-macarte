@@ -40,15 +40,6 @@ function criaLista() {
 export function setupEvents(root){
   const btnAtualizar = root.querySelector("#atualizar");
   btnAtualizar.addEventListener("click", ()=> Atualizar(root));
-  //{
-  //   const lista = getLista();
-  //   ol.innerHTML = "";
-  //   for(let i=0; i<lista.length; i++){
-  //     const li = document.createElement("li");
-  //     li.textContent = lista[i];
-  //     ol.append(li);
-  //   }
-  // });
 }
 
 function Atualizar(root){
